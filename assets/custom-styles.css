@@ -1,0 +1,242 @@
+/**
+ * Custom Stylesheet for RVNUG Tech Talk Presentation
+ * Improves visual consistency and presentation formatting
+ */
+
+/* ===== Global Presentation Styles ===== */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ===== Stage Area Improvements ===== */
+#stageArea {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+}
+
+#stage {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* ===== Slide Navigator Enhancements ===== */
+#slideshowNavigator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 12px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+}
+
+#slideshowNavigator:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+/* ===== Slide Number Display ===== */
+#slideNumberDisplay {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    padding: 8px 16px;
+    border-radius: 16px;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+#slideNumberDisplay:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* ===== Help Placard Styling ===== */
+#helpPlacard {
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Waiting Indicator ===== */
+#waitingIndicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+}
+
+#waitingSpinner {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== Keyboard Navigation Hints ===== */
+.keyboard-hint {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.keyboard-hint.show {
+    opacity: 1;
+}
+
+.keyboard-hint kbd {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-family: monospace;
+    font-size: 12px;
+    margin: 0 4px;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+    #slideNumberDisplay {
+        bottom: 20px;
+        right: 20px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    #slideshowNavigator {
+        bottom: 15px;
+        padding: 10px 20px;
+        gap: 12px;
+    }
+    
+    .keyboard-hint {
+        display: none;
+    }
+}
+
+/* ===== Hyperlink Styling ===== */
+#hyperlinkPlane a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#hyperlinkPlane a:hover {
+    color: #0052a3;
+    text-decoration: underline;
+}
+
+#hyperlinkPlane a:visited {
+    color: #551a8b;
+}
+
+/* ===== Smooth Transitions ===== */
+#stage > * {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* ===== Accessibility Improvements ===== */
+*:focus-visible {
+    outline: 2px solid rgba(0, 122, 255, 0.8);
+    outline-offset: 2px;
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    #slideshowNavigator,
+    #slideNumberDisplay,
+    #helpPlacard,
+    .keyboard-hint {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    #stageArea {
+        background: white;
+    }
+}
+
+/* ===== Dark Mode Enhancements ===== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000;
+    }
+}
+
+/* ===== Animation for Slide Transitions ===== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-transition {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* ===== Fullscreen Mode Optimizations ===== */
+:fullscreen #stageArea,
+:-webkit-full-screen #stageArea,
+:-moz-full-screen #stageArea {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ===== Touch Device Optimizations ===== */
+@media (hover: none) and (pointer: coarse) {
+    #slideshowNavigator {
+        padding: 14px 28px;
+        gap: 20px;
+    }
+    
+    #slideNumberDisplay {
+        font-size: 16px;
+        padding: 10px 18px;
+    }
+}
